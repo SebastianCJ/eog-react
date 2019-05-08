@@ -15,7 +15,7 @@ const cardStyles = theme => ({
 });
 const Chip = withStyles(cardStyles)(ChipRaw);
 
-class Weather extends Component {
+class Weather extends Component {npm
   componentDidMount() {
     this.props.onLoad();
   }
