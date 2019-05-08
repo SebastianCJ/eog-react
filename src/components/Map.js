@@ -33,6 +33,9 @@ export class MapContainer extends Component {
   componentDidMount() {
     this.props.onLoad();
     console.log(this.props);
+    /* 
+    setTimeOut only for Dev purpouses
+    */
     setTimeout(() =>{
       this.props.stopDroneSync();
     },5000);
