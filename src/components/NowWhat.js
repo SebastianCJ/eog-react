@@ -30,15 +30,18 @@ const Avatar = withStyles(avatarStyles)(AvatarRaw);
 
 const styles = {
   card: {
-    margin: "5% 25%"
-  }
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'relative',
+    margin: '10% 5%',
+  },
 };
 
 const NowWhat = props => {
   const { classes } = props;
   return (
     <Card className={classes.card}>
-      <CardHeader title="OK, cj, you're all setup. Now What?" />
+      <CardHeader title="OK, Sebastian , you're all setup. Now What?" />
       <CardContent>
         <List>
           <ListItem>

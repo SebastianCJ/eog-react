@@ -3,12 +3,13 @@ import createStore from "./store";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import CssBaseline from "@material-ui/core/CssBaseline";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/Header";
 import Wrapper from "./components/Wrapper";
-import NowWhat from "./components/NowWhat";
-import Map from "./components/Map";
+import MapPage from "./components/pages/MapPage";
+
 
 const store = createStore();
 const theme = createMuiTheme({
@@ -34,8 +35,10 @@ const App = props => (
     <Provider store={store}>
       <Wrapper>
         <Header />
-        <NowWhat />
-        <Map />
+        <Router>
+          <Route path="/map" exact component={MapPage} />
+
+        </Router>
         <ToastContainer />
       </Wrapper>
     </Provider>
