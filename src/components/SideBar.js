@@ -14,7 +14,7 @@ import InsertChartIcon from '@material-ui/icons/InsertChart';
 import Typography from '@material-ui/core/Typography';
 
 
-const styles = {
+const styles = theme => ({
   card: {
     display: 'flex',
     flexDirection: 'column',
@@ -22,6 +22,9 @@ const styles = {
     width: '100%',
     paddingTop: '10px',
     backgroundColor: '#3893ca',
+    [theme.breakpoints.down('sm')]: {
+      width: "7vh",
+    }
   },
   link: {
     textDecoration: 'none'
@@ -31,15 +34,30 @@ const styles = {
   },
   unSelected: {
     color: "#000",
+    [theme.breakpoints.down('sm')]: {
+      textAlign: "center",
+    }
+  },
+  selectedTxt: {
+    color: "#FFF",
+    [theme.breakpoints.down('sm')]: {
+      display: "none",
+    }
+  },
+  unSelectedTxt: {
+    color: "#000",
+    [theme.breakpoints.down('sm')]: {
+      display: "none",
+    }
   }
-};
+});
 
 const StyledListItem = withStyles({
   root: {
     backgroundColor: "##3893ca",
     "&$selected": {
       backgroundColor: "#273142"
-    }
+    },
   },
   selected: {}
 })(ListItem);
@@ -77,7 +95,7 @@ class SideBar extends Component  {
                         {item.name === 'Home' ? <HomeIcon /> : item.name === 'Visualize Map' ? <MapIcon /> : <InsertChartIcon /> }
                       </ListItemIcon>
 
-                      <Typography className={selectedMenuIndex === item.index ? classes.selected : classes.unSelected}  variant="h6" >
+                      <Typography className={selectedMenuIndex === item.index ? classes.selectedTxt : classes.unSelectedTxt}  variant="h6" >
                           {item.name}
                       </Typography>
 

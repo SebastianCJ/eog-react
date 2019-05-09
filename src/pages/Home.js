@@ -10,7 +10,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
-    margin: '10% 5%',
+    margin: '5% 5%',
   },
 };
 

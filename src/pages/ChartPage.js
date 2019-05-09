@@ -40,10 +40,6 @@ class ChartPage extends Component {
     this.props.stopDroneSync();
   }
 
-  componentDidUpdate() {
-    console.log(this.props);
-  }
-
   render() {
     const { classes, temperatures, time, loading } = this.props;
     if(loading){

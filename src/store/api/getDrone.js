@@ -5,7 +5,6 @@ const getDrone = async () => {
   const response = await fetch(
     `https://react-assessment-api.herokuapp.com/api/drone`
   );
-  console.log(response);
   if (!response.ok) {
     return { error: { code: response.status, message: response.statusText } };
   }
