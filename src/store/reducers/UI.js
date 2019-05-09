@@ -5,22 +5,15 @@ const initialState = {
   data: []
 };
 
-const startLoading = (state, action) => {
-  return { ...state, loading: true };
-};
-
-const droneReceived = (state, action) => {
-
+const selectMenu = (state, action) => {
   return {
     ...state,
-    loading: false,
-    data: action.data.data
+    selectedMenuIndex: action.menuIndex
   };
 };
 
 const handlers = {
-  [actions.FETCH_WEATHER]: startLoading,
-  [actions.DRONE_RECEIVED]: droneReceived
+  [actions.SELECT_MENU]: selectMenu
 };
 
 export default (state = initialState, action) => {

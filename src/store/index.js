@@ -5,11 +5,13 @@ import logger from 'redux-logger'
 import sagas from "./sagas";
 import weatherReducer from "./reducers/Weather";
 import droneReducer from "./reducers/Drone";
+import uiReducer from "./reducers/UI";
 
 export default () => {
   const rootReducer = combineReducers({
     weather: weatherReducer,
     drone: droneReducer,
+    ui: uiReducer,
   });
 
   const composeEnhancers = composeWithDevTools({});
