@@ -6,14 +6,11 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import Card from "@material-ui/core/Card";
 import CardHeaderRaw from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from '@material-ui/core/CardMedia';
-import Paper from '@material-ui/core/Paper';
 import { withStyles } from "@material-ui/core/styles";
 
 const mapStyles = {
   width: '100%',
   height: '100%',
-  position: 'relative',
 };
 
 const cardStyles = theme => ({
@@ -28,29 +25,20 @@ const cardStyles = theme => ({
 
 const CardHeader = withStyles(cardStyles)(CardHeaderRaw);
 
-export class MapContainer extends Component {
+export class MapPage extends Component {
   
   componentDidMount() {
     this.props.onLoad();
-    console.log(this.props);
-    /* 
-    setTimeOut only for Dev purpouses
-    */
-    setTimeout(() =>{
-      this.props.stopDroneSync();
-    },5000);
   }
 
   componentWillUnmount() {
-    console.log("Unmounting");
     this.props.stopDroneSync();
   }
 
   render() {
-    const { classes } = this.props;
-    console.log(this.props.lastPosition)
-    const { lastPosition, loading } = this.props;
-    if ((loading || !lastPosition || !lastPosition.latitude || !lastPosition.longitude)) {
+    const { classes, lastPosition, loading } = this.props;
+    
+    if (loading || !lastPosition || !lastPosition.latitude || !lastPosition.longitude) {
       return (
         <LinearProgress />
       )
@@ -63,7 +51,6 @@ export class MapContainer extends Component {
             google={this.props.google}
             zoom={6}
             style={mapStyles}
-            xs={12}
             initialCenter={{
             lat: lastPosition.latitude,
             lng: lastPosition.longitude
@@ -85,7 +72,6 @@ const mapState = (state, ownProps) => {
     loading,
     data
   } = state.drone;
-  console.log(data);
   return {
     loading,
     lastPosition: data[data.length-1]
@@ -114,7 +100,7 @@ const styles = {
   content: {
     flex: 1,
     position: 'relative',
-    padding: '0px'
+    padding: '0px',
   }
 };
 
@@ -123,4 +109,4 @@ export default withStyles(styles)(connect(
   mapDispatch
 )(GoogleApiWrapper({
   apiKey: process.env.REACT_APP_APIKEY
-})(MapContainer)));
+})(MapPage)));

@@ -21,9 +21,6 @@ const CardHeader = withStyles(cardStyles)(CardHeaderRaw);
 const avatarStyles = theme => ({
   root: {
     background: theme.palette.primary.main
-  },
-  title: {
-    color: "white"
   }
 });
 const Avatar = withStyles(avatarStyles)(AvatarRaw);

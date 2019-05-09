@@ -6,7 +6,7 @@ const findWeatherbyId = async id => {
     `https://react-assessment-api.herokuapp.com/api/weather/location/${id}/`
   );
   if (!response.ok) {
-    return { error: { code: response.status } };
+    return { error: { code: response.status, message: response.statusText } };
   }
   const json = await response.json();
   return { data: json };

@@ -8,7 +8,11 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/Header";
 import Wrapper from "./components/Wrapper";
-import MapPage from "./components/pages/MapPage";
+import MapPage from "./pages/MapPage";
+import ChartPage from "./pages/ChartPage";
+import Home from "./pages/Home";
+import SideBar from "./components/SideBar";
+import Grid from "@material-ui/core/Grid";
 
 
 const store = createStore();
@@ -31,17 +35,28 @@ const theme = createMuiTheme({
 
 const App = props => (
   <MuiThemeProvider theme={theme}>
+  <Router>
     <CssBaseline />
     <Provider store={store}>
       <Wrapper>
         <Header />
-        <Router>
-          <Route path="/map" exact component={MapPage} />
+        <Grid container style={{display: "flex", flex:'1'}}>
 
-        </Router>
-        <ToastContainer />
+          <Grid item xs={2}>
+            <SideBar />
+          </Grid>
+
+          <Grid item xs={10}>
+              <Route path="/" exact component={Home} />
+              <Route path="/map" exact component={MapPage} />
+              <Route path="/chart" exact component={ChartPage} />
+          </Grid>
+          
+        </Grid>
+        <ToastContainer position="bottom-right"/>
       </Wrapper>
     </Provider>
+    </Router>
   </MuiThemeProvider>
 );
 
